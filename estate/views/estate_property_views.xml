@@ -95,4 +95,19 @@
         </field>
     </record>
 
+    <record id="view_estate_property_search" model="ir.ui.view">
+        <field name="name">estate.property.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="Available">
+                <field name="name" string="Title"/>
+                <field name="postcode"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <filter string="Available" name="available" domain="['|', ('state', '=', 'new'),
+                                                                          ('state', '=', 'offer received')]"/>
+            </search>
+        </field>
+    </record>
+
 </odoo>
