@@ -83,12 +83,12 @@
                         <!--                                   attrs="{'readonly': [('state', 'in', ['offer accepted', 'sold', 'canceled'])]}"-->
                         <!--                            />-->
                         <!--                        </page>-->
-                        <!--                        <page string="Other">-->
-                        <!--                            <group>-->
-                        <!--                                <field name="buyer"/>-->
-                        <!--                                <field name="salesperson"/>-->
-                        <!--                            </group>-->
-                        <!--                        </page>-->
+                        <page string="Other">
+                            <group>
+                                <field name="buyer"/>
+                                <field name="salesperson"/>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
