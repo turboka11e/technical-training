@@ -54,7 +54,7 @@
 <!--                    </group>-->
                     <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
                             attrs="{'invisible': [('active', '=', True)]}"/>
-                    <group col="4">
+                    <group col="2">
 <!--                        <field name="property_type_id" string="Property Type"/>-->
                         <field name="expected_price"/>
                         <field name="postcode"/>
