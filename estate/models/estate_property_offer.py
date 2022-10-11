@@ -23,29 +23,29 @@ class EstatePropertyOffer(models.Model):
     property_id = fields.Many2one('estate.property', required=True, ondelete='cascade')
     # property_type_id = fields.Many2one(related="property_id.property_type_id", store=True, string='Property Type')
 
-    @api.depends("validity")
-    def _compute_date_deadline(self):
-        for record in self:
-            create_date = record.create_date if record.create_date else fields.Datetime.now()
-            record.date_deadline = create_date + relativedelta(days=record.validity)
-
-    def _inverse_date_deadline(self):
-        for record in self:
-            record.validity = (record.date_deadline - record.create_date.date()).days
-
-    def action_accept_offer(self):
-        for record in self:
-            record.status = 'accepted'
-            record.property_id.state = 'offer accepted'
-            record.property_id.selling_price = record.price
-            record.property_id.buyer = record.partner_id
-
-    def action_refuse_offer(self):
-        for record in self:
-            record.status = 'refused'
-
-    @api.model
-    def create(self, vals):
-        self.env['estate.property'].browse(vals['property_id']).state = 'offer received'
-
-        return super().create(vals)
+    # @api.depends("validity")
+    # def _compute_date_deadline(self):
+    #     for record in self:
+    #         create_date = record.create_date if record.create_date else fields.Datetime.now()
+    #         record.date_deadline = create_date + relativedelta(days=record.validity)
+    #
+    # def _inverse_date_deadline(self):
+    #     for record in self:
+    #         record.validity = (record.date_deadline - record.create_date.date()).days
+    #
+    # def action_accept_offer(self):
+    #     for record in self:
+    #         record.status = 'accepted'
+    #         record.property_id.state = 'offer accepted'
+    #         record.property_id.selling_price = record.price
+    #         record.property_id.buyer = record.partner_id
+    #
+    # def action_refuse_offer(self):
+    #     for record in self:
+    #         record.status = 'refused'
+    #
+    # @api.model
+    # def create(self, vals):
+    #     self.env['estate.property'].browse(vals['property_id']).state = 'offer received'
+    #
+    #     return super().create(vals)
