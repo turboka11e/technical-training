@@ -33,19 +33,19 @@ class EstatePropertyOffer(models.Model):
         for record in self:
             record.validity = (record.date_deadline - record.create_date.date()).days
 
-    # def action_accept_offer(self):
-    #     for record in self:
-    #         record.status = 'accepted'
-    #         record.property_id.state = 'offer accepted'
-    #         record.property_id.selling_price = record.price
-    #         record.property_id.buyer_id = record.partner_id
-    #
-    # def action_refuse_offer(self):
-    #     for record in self:
-    #         record.status = 'refused'
-    #
-    # @api.model
-    # def create(self, vals):
-    #     self.env['estate.property'].browse(vals['property_id']).state = 'offer received'
-    #
-    #     return super().create(vals)
+    def action_accept_offer(self):
+        for record in self:
+            record.status = 'accepted'
+            record.property_id.state = 'offer accepted'
+            record.property_id.selling_price = record.price
+            record.property_id.buyer_id = record.partner_id
+
+    def action_refuse_offer(self):
+        for record in self:
+            record.status = 'refused'
+
+    @api.model
+    def create(self, vals):
+        self.env['estate.property'].browse(vals['property_id']).state = 'offer received'
+
+        return super().create(vals)

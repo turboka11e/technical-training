@@ -1,5 +1,6 @@
-from odoo import models, fields, api
 from dateutil.relativedelta import relativedelta
+from odoo import models, fields, api, tools
+from odoo.exceptions import UserError, ValidationError
 
 
 class EstateProperty(models.Model):
@@ -58,24 +59,24 @@ class EstateProperty(models.Model):
             self.garden_area = None
             self.garden_orientation = None
 
-    # def action_sold(self):
-    #     for record in self:
-    #         if record.state == 'canceled':
-    #             raise UserError("Canceled properties cannot be sold.")
-    #         record.state = 'sold'
-    #
-    # def action_canceled(self):
-    #     for record in self:
-    #         if record.state == 'sold':
-    #             raise UserError("Property already sold.")
-    #         record.state = 'canceled'
-    #
-    # @api.constrains('selling_price')
-    # def _check_selling_price(self):
-    #     for record in self:
-    #         if tools.float_compare(record.selling_price, 0.9 * record.expected_price, precision_digits=2) == -1:
-    #             raise ValidationError("Selling price is below 90% of expected price!")
-    #
+    def action_sold(self):
+        for record in self:
+            if record.state == 'canceled':
+                raise UserError("Canceled properties cannot be sold.")
+            record.state = 'sold'
+
+    def action_canceled(self):
+        for record in self:
+            if record.state == 'sold':
+                raise UserError("Property already sold.")
+            record.state = 'canceled'
+
+    @api.constrains('selling_price')
+    def _check_selling_price(self):
+        for record in self:
+            if tools.float_compare(record.selling_price, 0.9 * record.expected_price, precision_digits=2) == -1:
+                raise ValidationError("Selling price is below 90% of expected price!")
+
     # def unlink(self):
     #     for record in self:
     #         if record.state not in ["new", "canceled"]:
