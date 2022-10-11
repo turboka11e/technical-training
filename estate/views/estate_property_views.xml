@@ -44,22 +44,18 @@
                     <field name="state" widget="statusbar" statusbar_visible="new,offer received,offer accepted,sold"/>
                 </header>
                 <sheet>
-                    <group>
-                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
-                                attrs="{'invisible': [('active', '=', True)]}"/>
-                        <h1>
-                            <field name="name"/>
-                        </h1>
-                    </group>
-                    <group>
-                        <field name="tags_ids" nolabel="1" widget="many2many_tags"
-                               options="{'color_field': 'color'}"/>
-                    </group>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <field name="tags_ids" nolabel="1" widget="many2many_tags"
+                           options="{'color_field': 'color'}"/>
                     <group col="2">
                         <field name="property_type_id" string="Property Type"/>
                         <field name="expected_price"/>
                         <field name="postcode"/>
-                        <!--                        <field name="best_price" string="Best Offer"/>-->
+                        <field name="best_price" string="Best Offer"/>
                         <field name="date_availability"/>
                         <field name="selling_price"/>
 
@@ -76,7 +72,7 @@
                                 <field name="garden"/>
                                 <field name="garden_area" string="Garden Area (sqm)"/>
                                 <field name="garden_orientation" string="Garden Orientation"/>
-                                <!--                                <field name="total_area" string="Total Area (sqm)"/>-->
+                                <field name="total_area" string="Total Area (sqm)"/>
                             </group>
                         </page>
                         <page string="Offers">
@@ -86,8 +82,8 @@
                         </page>
                         <page string="Other">
                             <group>
-                                <field name="buyer"/>
-                                <field name="salesperson"/>
+                                <field name="buyer_id"/>
+                                <field name="salesperson_id"/>
                             </group>
                         </page>
                     </notebook>
