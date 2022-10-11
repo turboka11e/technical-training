@@ -13,7 +13,7 @@ class EstatePropertyOffer(models.Model):
 
     price = fields.Float()
     status = fields.Selection(selection=[('accepted', 'Accepted'), ('refused', 'Refused')], copy=False)
-    # validity = fields.Integer(default=7)
+    validity = fields.Integer(default=7)
 
     # Computed fields
     date_deadline = fields.Date(compute="_compute_date_deadline", inverse="_inverse_date_deadline")
