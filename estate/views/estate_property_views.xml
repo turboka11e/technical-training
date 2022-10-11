@@ -30,19 +30,19 @@
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <form string="estate_property_form">
-                <!--                <header>-->
-                <!--                    <button name="action_sold" string="Sold"-->
-                <!--                            type="object"-->
-                <!--                            attrs="{'invisible': ('active','=',False)}"-->
-                <!--                            states="new,offer received,offer accepted"-->
-                <!--                    />-->
-                <!--                    <button name="action_canceled" string="Cancel"-->
-                <!--                            type="object"-->
-                <!--                            attrs="{'invisible': ('active','=',False)}"-->
-                <!--                            states="new,offer received,offer accepted"-->
-                <!--                    />-->
-                <!--                    <field name="state" widget="statusbar" statusbar_visible="new,offer received,offer accepted,sold"/>-->
-                <!--                </header>-->
+                <header>
+                    <!--                    <button name="action_sold" string="Sold"-->
+                    <!--                            type="object"-->
+                    <!--                            attrs="{'invisible': ('active','=',False)}"-->
+                    <!--                            states="new,offer received,offer accepted"-->
+                    <!--                    />-->
+                    <!--                    <button name="action_canceled" string="Cancel"-->
+                    <!--                            type="object"-->
+                    <!--                            attrs="{'invisible': ('active','=',False)}"-->
+                    <!--                            states="new,offer received,offer accepted"-->
+                    <!--                    />-->
+                    <field name="state" widget="statusbar" statusbar_visible="new,offer received,offer accepted,sold"/>
+                </header>
                 <sheet>
                     <group>
                         <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
@@ -51,11 +51,12 @@
                             <field name="name"/>
                         </h1>
                     </group>
-                    <!--                    <group>-->
-                    <!--                        <field name="tags_ids" nolabel="1" widget="many2many_tags" options="{'color_field': 'color'}"/>-->
-                    <!--                    </group>-->
+                    <group>
+                        <field name="tags_ids" nolabel="1" widget="many2many_tags"
+                               options="{'color_field': 'color'}"/>
+                    </group>
                     <group col="2">
-                        <!--                        <field name="property_type_id" string="Property Type"/>-->
+                        <field name="property_type_id" string="Property Type"/>
                         <field name="expected_price"/>
                         <field name="postcode"/>
                         <!--                        <field name="best_price" string="Best Offer"/>-->
@@ -78,11 +79,11 @@
                                 <!--                                <field name="total_area" string="Total Area (sqm)"/>-->
                             </group>
                         </page>
-                        <!--                        <page string="Offers">-->
-                        <!--                            <field name="offer_ids"-->
-                        <!--                                   attrs="{'readonly': [('state', 'in', ['offer accepted', 'sold', 'canceled'])]}"-->
-                        <!--                            />-->
-                        <!--                        </page>-->
+                        <page string="Offers">
+                            <field name="offer_ids"
+                                   attrs="{'readonly': [('state', 'in', ['offer accepted', 'sold', 'canceled'])]}"
+                            />
+                        </page>
                         <page string="Other">
                             <group>
                                 <field name="buyer"/>

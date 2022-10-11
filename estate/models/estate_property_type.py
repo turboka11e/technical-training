@@ -10,7 +10,7 @@ class EstatePropertyType(models.Model):
 
     property_ids = fields.One2many("estate.property", "property_type_id")
 
-    # offer_ids = fields.One2many("estate.property.offer", "property_type_id")
+    offer_ids = fields.One2many("estate.property.offer", "property_type_id")
     # offer_count = fields.Integer(compute="_compute_count_offers")
     #
     # @api.depends("offer_ids")
