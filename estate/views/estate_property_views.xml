@@ -50,15 +50,17 @@
                         <field name="name"/>
                     </h1>
                     <field name="tags_ids" nolabel="1" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                    <group col="2">
-                        <field name="property_type_id" string="Property Type"/>
-                        <field name="expected_price"/>
-                        <field name="postcode"/>
-                        <field name="best_price" string="Best Offer"/>
-                        <field name="date_availability"/>
-                        <field name="selling_price"/>
+                    <group>
+                        <group col="2">
+                            <field name="property_type_id" string="Property Type"/>
+                            <field name="expected_price"/>
+                            <field name="postcode"/>
+                            <field name="best_price" string="Best Offer"/>
+                            <field name="date_availability"/>
+                            <field name="selling_price"/>
 
-                        <field name="active" invisible="1"/>
+                            <field name="active" invisible="1"/>
+                        </group>
                     </group>
                     <notebook>
                         <page string="Description">

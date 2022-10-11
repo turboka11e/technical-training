@@ -22,7 +22,7 @@ class EstateProperty(models.Model):
             raise UserError("Journal Error")
         invoice_vals = {
             'move_type': 'out_invoice',
-            'partner_id': self.buyer_id,
+            'partner_id': self.buyer_id.id,
             'journal_id': journal.id,
         }
         return invoice_vals
