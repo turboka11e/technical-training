@@ -60,5 +60,5 @@ class EstateProperty(models.Model):
             invoice_vals_list.append(invoice_vals)
 
         # Create invoices
-        moves = self.env['account.journal'].sudo().create(invoice_vals_list)
+        moves = self.env['account.move'].sudo().with_context(default_move_type='out_invoice').create(invoice_vals_list)
         return moves
