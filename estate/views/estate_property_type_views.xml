@@ -23,16 +23,6 @@
         <field name="arch" type="xml">
             <form string="estate_property_type_form">
                 <sheet>
-<!--                    <div class="oe_button_box" name="button_box">-->
-<!--                        <button name="%(estate.estate_property_offer_action)d"-->
-<!--                                type="action"-->
-<!--                                context="{'search_default_expected': True}"-->
-<!--                                class="oe_stat_button"-->
-<!--                                icon="fa-money"-->
-<!--                                help="Total offers for type">-->
-<!--                            <field name="offer_count" widget="statinfo" string="Offer Count"/>-->
-<!--                        </button>-->
-<!--                    </div>-->
                     <group>
                         <h1>
                             <field name="name"/>
