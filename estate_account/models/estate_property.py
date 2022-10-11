@@ -16,7 +16,8 @@ class EstateProperty(models.Model):
     def _prepare_invoice(self):
         self.ensure_one()
         _logger.error("Prepare Invoice")
-        journal = self.env['account.move'].with_context(default_move_type='out_invoice')._get_default_journal()
+        journal = self.env['account.journal'].search([('code', '=', 'INV')], limit=1)
+
         if not journal:
             raise UserError("Journal Error")
         invoice_vals = {
@@ -35,10 +36,8 @@ class EstateProperty(models.Model):
                 return self.env['account.move']
 
         invoice_vals_list = []
-        invoice_item_sequence = 0
         for order in self:
             invoice_vals = order._prepare_invoice()
-            current_section_vals = None
 
             invoice_vals['invoice_line_ids'] = [
                 (0, 0,
